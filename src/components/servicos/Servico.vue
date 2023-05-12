@@ -17,6 +17,24 @@ export default {
   mixins: [ApiMixin],
   created() {
     this.getDadosApi(`http://localhost:3000/servicos/${this.$route.params.id}`)
+  },
+  beforeRouteUpdate(to, from, next) {
+    //to = $route para onde estamos indo
+    //from = $route para onde estamos vindo
+    //next = faz com que o fluxo de navegação siga em frente
+
+    if(to.params.id != undefined){
+      this.getDadosApi(`http://localhost:3000/servicos/${to.params.id}`)
+    }
+
+    next()
   }
+  // watch: {
+  //   $route(to) { //to = novoValor, from = valorAntigo
+  //     if(to.params.id != undefined){
+  //       this.getDadosApi(`http://localhost:3000/servicos/${to.params.id}`)
+  //     }
+  //   }
+  // }
 }
 </script>

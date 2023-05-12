@@ -7,7 +7,9 @@
         <div class="card" style="width: 11rem">
           <img class="card-img-top" :src="`/img/${dado.icone}`" />
           <div class="card-body text-center">
-            <p class="card-text">{{ dado.servico }}</p>
+            <router-link :to="{ name: 'servico', params: { id: dado.id} }">
+              <p class="card-text">{{ dado.servico }}</p>
+            </router-link>
           </div>
         </div>
       </div>
